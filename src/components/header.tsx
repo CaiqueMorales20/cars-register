@@ -13,7 +13,7 @@ function Header() {
         <Separator orientation="vertical" className="h-[60%]" />
 
         <nav className="flex gap-6">
-          <NavLink to="/">Cars</NavLink>
+          <NavLink to="/cars">Cars</NavLink>
         </nav>
       </div>
 
