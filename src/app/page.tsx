@@ -1,3 +1,9 @@
+import { Button } from '@/components/ui/button'
+
 export default function Home() {
-  return <main>Ready to code</main>
+  return (
+    <main className="flex h-full w-full">
+      <Button>Send</Button>
+    </main>
+  )
 }
