@@ -76,3 +76,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.container-c{
+  @apply w-[90%] mx-auto
+}
