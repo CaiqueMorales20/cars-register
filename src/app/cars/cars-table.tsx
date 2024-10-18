@@ -8,9 +8,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useDeleteCarRegister } from '@/hooks/use-delete-car-register'
 import { ICarRegister } from '@/types/car-register'
 
 function CarsTable({ carsRegisters }: { carsRegisters: ICarRegister[] }) {
+  const { deleteCarRegisterFn } = useDeleteCarRegister()
+
   return (
     <Table>
       <TableHeader>
@@ -49,13 +52,18 @@ function CarsTable({ carsRegisters }: { carsRegisters: ICarRegister[] }) {
               <TableCell className="text-foreground/90">{car_make}</TableCell>
               <TableCell className="text-foreground/90">{car_model}</TableCell>
               <TableCell className="text-foreground/90">
-                {car_model_year}
+                {car_model_year === 0 ? '' : car_model_year}
               </TableCell>
               <TableCell>
                 <Button variant={'secondary'}>Update</Button>
               </TableCell>
               <TableCell>
-                <Button variant={'destructive'}>Delete</Button>
+                <Button
+                  onClick={() => deleteCarRegisterFn({ id })}
+                  variant={'destructive'}
+                >
+                  Delete
+                </Button>
               </TableCell>
             </TableRow>
           ),

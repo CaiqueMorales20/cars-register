@@ -39,11 +39,13 @@ function useCreateCarRegister() {
       car_model,
       car_model_year,
     }) {
-      const cached = queryClient.getQueryData<ICarRegister[]>(['car-registers'])
+      const cached = queryClient.getQueryData<ICarRegister[]>([
+        'cars-registers',
+      ])
 
       if (cached) {
         queryClient.setQueryData<ICarRegister[]>(
-          ['car-registers'],
+          ['cars-registers'],
           [
             ...cached,
             {

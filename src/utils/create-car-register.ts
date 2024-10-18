@@ -12,7 +12,7 @@ async function createCarRegister({
   car_model,
   car_model_year,
 }: Omit<ICarRegister, 'id'>) {
-  const { data } = await api.put(`/cars/`, {
+  const { data } = await api.post(`/cars/`, {
     first_name,
     last_name,
     email,
