@@ -6,7 +6,7 @@ import { ICarRegister } from '@/types/car-register'
 import { updateCarRegisterFirstName } from '@/utils/update-car-register-first-name'
 
 function useUpdateCarRegisterFirstName() {
-  const { mutateAsync: updateCarRegisterFn } = useMutation({
+  const { mutateAsync: updateCarRegisterFirstNameFn } = useMutation({
     mutationKey: ['update-car-register'],
     mutationFn: ({ id, first_name }: Pick<ICarRegister, 'id' | 'first_name'>) =>
       updateCarRegisterFirstName({
@@ -45,7 +45,7 @@ function useUpdateCarRegisterFirstName() {
     },
   })
 
-  return { updateCarRegisterFn }
+  return { updateCarRegisterFirstNameFn }
 }
 
 export { useUpdateCarRegisterFirstName }

@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import {
   Table,
   TableBody,
@@ -11,6 +12,8 @@ import {
 import { useDeleteCarRegister } from '@/hooks/use-delete-car-register'
 import { ICarRegister } from '@/types/car-register'
 
+import { UpdateCarRegisterModal } from './update-car-register-modal'
+
 function CarsTable({ carsRegisters }: { carsRegisters: ICarRegister[] }) {
   const { deleteCarRegisterFn } = useDeleteCarRegister()
 
@@ -20,7 +23,7 @@ function CarsTable({ carsRegisters }: { carsRegisters: ICarRegister[] }) {
         <TableRow>
           <TableHead className="">First Name</TableHead>
           <TableHead className="">Last Name</TableHead>
-          <TableHead className="">Email</TableHead>
+          <TableHead className="w-16">Email</TableHead>
           <TableHead className="">Car Plate</TableHead>
           <TableHead className="">Car Vin</TableHead>
           <TableHead className="">Car Make</TableHead>
@@ -55,7 +58,13 @@ function CarsTable({ carsRegisters }: { carsRegisters: ICarRegister[] }) {
                 {car_model_year === 0 ? '' : car_model_year}
               </TableCell>
               <TableCell>
-                <Button variant={'secondary'}>Update</Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant={'secondary'}>Update</Button>
+                  </DialogTrigger>
+
+                  <UpdateCarRegisterModal id={id} />
+                </Dialog>
               </TableCell>
               <TableCell>
                 <Button

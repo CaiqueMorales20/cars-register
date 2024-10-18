@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
+import { ICarRegister } from '@/types/car-register'
 import { getCarRegisterById } from '@/utils/get-car-register-by-id'
 
 function useCarRegisterById({ id }: { id: number }) {
@@ -8,7 +9,7 @@ function useCarRegisterById({ id }: { id: number }) {
     queryFn: () => getCarRegisterById({ id }),
   })
 
-  return { carRegister }
+  return { carRegister } as { carRegister: ICarRegister }
 }
 
 export { useCarRegisterById }
