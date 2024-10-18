@@ -20,7 +20,7 @@ function CreateCarForm() {
         <CreateCarInput key={field} name={field} />
       ))}
 
-      <Button className="w-max">Register</Button>
+      <Button className="mx-1 w-max">Register</Button>
     </form>
   )
 }

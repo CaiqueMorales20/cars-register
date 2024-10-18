@@ -4,7 +4,7 @@ import { formatLabel } from '@/utils/format-label'
 
 function CreateCarInput({ name }: { name: string }) {
   return (
-    <div className="space-y-2">
+    <div className="mx-1 space-y-2">
       <Label htmlFor={name}>{formatLabel(name)}</Label>
       <Input id={name} name={name} placeholder={`${formatLabel(name)}...`} />
     </div>
