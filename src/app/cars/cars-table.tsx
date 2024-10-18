@@ -12,6 +12,7 @@ import {
 import { useDeleteCarRegister } from '@/hooks/use-delete-car-register'
 import { ICarRegister } from '@/types/car-register'
 
+import { CarsTableBodySkeleton } from './cars-table-body-skeleton'
 import { UpdateCarRegisterModal } from './update-car-register-modal'
 
 function CarsTable({ carsRegisters }: { carsRegisters: ICarRegister[] }) {
@@ -34,48 +35,60 @@ function CarsTable({ carsRegisters }: { carsRegisters: ICarRegister[] }) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {carsRegisters?.map(
-          ({
-            id,
-            first_name,
-            last_name,
-            email,
-            car_plate,
-            car_vin,
-            car_make,
-            car_model,
-            car_model_year,
-          }) => (
-            <TableRow key={id}>
-              <TableCell className="text-foreground/90">{first_name}</TableCell>
-              <TableCell className="text-foreground/90">{last_name}</TableCell>
-              <TableCell className="text-foreground/90">{email}</TableCell>
-              <TableCell className="text-foreground/90">{car_plate}</TableCell>
-              <TableCell className="text-foreground/90">{car_vin}</TableCell>
-              <TableCell className="text-foreground/90">{car_make}</TableCell>
-              <TableCell className="text-foreground/90">{car_model}</TableCell>
-              <TableCell className="text-foreground/90">
-                {car_model_year === 0 ? '' : car_model_year}
-              </TableCell>
-              <TableCell>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant={'secondary'}>Update</Button>
-                  </DialogTrigger>
+        {carsRegisters ? (
+          carsRegisters.map(
+            ({
+              id,
+              first_name,
+              last_name,
+              email,
+              car_plate,
+              car_vin,
+              car_make,
+              car_model,
+              car_model_year,
+            }) => (
+              <TableRow key={id}>
+                <TableCell className="text-foreground/90">
+                  {first_name}
+                </TableCell>
+                <TableCell className="text-foreground/90">
+                  {last_name}
+                </TableCell>
+                <TableCell className="text-foreground/90">{email}</TableCell>
+                <TableCell className="text-foreground/90">
+                  {car_plate}
+                </TableCell>
+                <TableCell className="text-foreground/90">{car_vin}</TableCell>
+                <TableCell className="text-foreground/90">{car_make}</TableCell>
+                <TableCell className="text-foreground/90">
+                  {car_model}
+                </TableCell>
+                <TableCell className="text-foreground/90">
+                  {car_model_year === 0 ? '' : car_model_year}
+                </TableCell>
+                <TableCell>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant={'secondary'}>Update</Button>
+                    </DialogTrigger>
 
-                  <UpdateCarRegisterModal id={id} />
-                </Dialog>
-              </TableCell>
-              <TableCell>
-                <Button
-                  onClick={() => deleteCarRegisterFn({ id })}
-                  variant={'destructive'}
-                >
-                  Delete
-                </Button>
-              </TableCell>
-            </TableRow>
-          ),
+                    <UpdateCarRegisterModal id={id} />
+                  </Dialog>
+                </TableCell>
+                <TableCell>
+                  <Button
+                    onClick={() => deleteCarRegisterFn({ id })}
+                    variant={'destructive'}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ),
+          )
+        ) : (
+          <CarsTableBodySkeleton />
         )}
       </TableBody>
     </Table>
