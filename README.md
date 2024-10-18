@@ -18,6 +18,15 @@ This project focuses on TypeScript and React, featuring a form to manage the reg
 - Error Handling with clear user feedback
 - Design Pattern Implementation for scalable architecture
 - Dark Mode support for improved user experience
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`NEXT_PUBLIC_API_BASE_URL="https://my.api.mockaroo.com/"`
+`NEXT_PUBLIC_SK`
+
+
 ## Run Locally
 
 Clone the project
