@@ -2,6 +2,7 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { Toaster } from 'sonner'
 
 import { Header } from '@/components/header'
 import QueryProvider from '@/providers/query-provider'
@@ -41,6 +42,7 @@ export default function RootLayout({
           <QueryProvider>
             <Header />
             {children}
+            <Toaster />
           </QueryProvider>
         </ThemeProvider>
       </body>
