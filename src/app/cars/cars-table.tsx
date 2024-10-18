@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Button } from '@/components/ui/button'
 import {
   Table,
@@ -7,8 +8,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { ICarRegister } from '@/types/car-register'
 
-function CarsTable() {
+function CarsTable({ carsRegisters }: { carsRegisters: ICarRegister[] }) {
   return (
     <Table>
       <TableHeader>
@@ -26,28 +28,38 @@ function CarsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: 8 }).map((product, i) => (
-          <TableRow key={i}>
-            <TableCell className="text-foreground/90">Fulano</TableCell>
-            <TableCell className="text-foreground/90">de Tal</TableCell>
-            <TableCell className="text-foreground/90">
-              fulano@email.com.br
-            </TableCell>
-            <TableCell className="text-foreground/90">FAG9B88</TableCell>
-            <TableCell className="text-foreground/90">
-              5UXWX9C52D0246778
-            </TableCell>
-            <TableCell className="text-foreground/90">Chevrolet</TableCell>
-            <TableCell className="text-foreground/90">Onix 1.4 LTZ</TableCell>
-            <TableCell className="text-foreground/90">2019</TableCell>
-            <TableCell>
-              <Button variant={'secondary'}>Update</Button>
-            </TableCell>
-            <TableCell>
-              <Button variant={'destructive'}>Delete</Button>
-            </TableCell>
-          </TableRow>
-        ))}
+        {carsRegisters?.map(
+          ({
+            id,
+            first_name,
+            last_name,
+            email,
+            car_plate,
+            car_vin,
+            car_make,
+            car_model,
+            car_model_year,
+          }) => (
+            <TableRow key={id}>
+              <TableCell className="text-foreground/90">{first_name}</TableCell>
+              <TableCell className="text-foreground/90">{last_name}</TableCell>
+              <TableCell className="text-foreground/90">{email}</TableCell>
+              <TableCell className="text-foreground/90">{car_plate}</TableCell>
+              <TableCell className="text-foreground/90">{car_vin}</TableCell>
+              <TableCell className="text-foreground/90">{car_make}</TableCell>
+              <TableCell className="text-foreground/90">{car_model}</TableCell>
+              <TableCell className="text-foreground/90">
+                {car_model_year}
+              </TableCell>
+              <TableCell>
+                <Button variant={'secondary'}>Update</Button>
+              </TableCell>
+              <TableCell>
+                <Button variant={'destructive'}>Delete</Button>
+              </TableCell>
+            </TableRow>
+          ),
+        )}
       </TableBody>
     </Table>
   )

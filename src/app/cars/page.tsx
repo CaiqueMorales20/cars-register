@@ -1,18 +1,18 @@
-import { getAllCarsRegisters } from '@/utils/get-all-cars-registers'
+'use client'
+
+import { useCarsRegisters } from '@/hooks/use-cars-registers'
 
 import { CarsHeader } from './cars-header'
 import { CarsTable } from './cars-table'
 
-export default async function Cars() {
-  const cars = await getAllCarsRegisters()
-
-  console.log(cars)
+export default function Cars() {
+  const { carsRegisters } = useCarsRegisters()
 
   return (
     <main className="container-c pb-20">
       <CarsHeader />
 
-      <CarsTable />
+      <CarsTable carsRegisters={carsRegisters} />
     </main>
   )
 }
